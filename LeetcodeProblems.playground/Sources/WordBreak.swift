@@ -27,7 +27,7 @@ public func wordBreakBF(_ s: String, _ wordDict: [String]) -> Bool {
     return false
 }
 
-// time complexity : O(W * k2)
+// time complexity : O(W * 2n), W - size of the dictionaryArray, n - size of s
 // space complexity : O(s)
 
 /* Now, lets use DP
@@ -37,9 +37,10 @@ public func wordBreakBF(_ s: String, _ wordDict: [String]) -> Bool {
 
 public func wordBreakDP(_ s: String, _ wordDict: [String]) -> Bool {
     var dp = [String: Bool]()
-    return wordBreak(s, wordDict, &dp)
+    let ans =  wordBreak(s, wordDict, &dp)
     
-    
+    print(dp)
+    return ans
 }
 
 func wordBreak(_ s: String, _ wordDict: [String], _ dp: inout [String: Bool]) -> Bool {
@@ -59,3 +60,6 @@ func wordBreak(_ s: String, _ wordDict: [String], _ dp: inout [String: Bool]) ->
     dp[s] = false
     return false
 }
+
+// now, the time complexity - O(W * n2) -- polynomial
+// space complexity: O(n)
